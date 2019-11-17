@@ -1,6 +1,4 @@
 #! /usr/bin/env python
-
-
 class RomanSymbols():
     def __init__(self):
         self._valid_symbols = {
@@ -15,16 +13,17 @@ class RomanSymbols():
 
     @property
     def valid_symbols(self):
-        return self._valid_symbols.keys()
+        return self._valid_symbols
 
     def get_value_by_name(self, symbol):
-        return self._valid_symbols.get(symbol)
+        if not isinstance(symbol, str):
+            raise TypeError
+        return self._valid_symbols[symbol.upper()]
 
     def check_symbols_validation(self, symbol):
         if not symbol or symbol not in self._valid_symbols.keys():
             return False
         return True
-
 
 
 if __name__ == "__main__":
