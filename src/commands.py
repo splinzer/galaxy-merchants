@@ -1,4 +1,4 @@
-
+import roman
 class Command():
 
     COMMAND_TYPES=[
@@ -9,26 +9,26 @@ class Command():
         "NO_IDEA"
     ]
 
-    def __init__(self):
-        pass
+    def __init__(self, symbol):
+        self.symbol= symbol
 
 
-    def process_command(self, cmd_type):
+    def process_command(self,cmd_type):
 
         if cmd_type == "ASSIGNMENT":
-            self._process_assignment()
+            pass
 
         elif cmd_type == "CREDITS":
-            self._process_credits()
+            pass
 
         elif cmd_type == "HOW_MUCH":
-            self._process_how_much()
+            pass
 
         elif cmd_type == "HOW_MANY":
-            self._process_how_many()
+            pass
 
         else:
-            self._process_no_idea()
+            pass
       
     def _process_assignment(self):
         pass
