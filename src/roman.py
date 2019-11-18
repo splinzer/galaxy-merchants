@@ -26,22 +26,20 @@ class Roman():
 
     def roman_to_arabic(self, roman):
         total = 0
-        local_max = 0
+        previous = 0
         if not self._validate_roman(roman):
             raise InvalidSyntaxException()
 
         for i in reversed(roman):
             r = self._get_value_by_symbol(i)
-            if local_max <= r:
+            if previous <= r:
                 total += r
-                local_max = r
+                previous = r
             else:
                 total -= r
         return total
 
     def _validate_roman(self, roman):
-        if not isinstance(roman, str):
-            raise TypeError
         if not re.match(self._validator, roman):
             return False
         return True
@@ -54,7 +52,4 @@ class Roman():
 
 
 if __name__ == "__main__":
-
-    r = Roman()
-    print(r.valid_symbols)
-    print(r.roman_to_arabic('MCMIII'))
+    pass

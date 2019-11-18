@@ -1,17 +1,16 @@
 #! /usr/bin/env python
+class InvalidSymbolException(Exception):
+    def __init__(self, symbol):
+        self.symbol = symbol
+    
+    def __str__(self):
+        return f'{self.symbol} is invalid symbol.'
 
-class RuleViolationException(Exception):
-    def __init__(self, message):
-        self.message = message
+
+class InvalidSyntaxException(Exception):
+    def __init__(self):
+        pass
 
     def __str__(self):
-        return f'RuleViolationException: {self.message}'
-
-
-class UnknownSymbolException(Exception):
-    def __init__(self, message):
-        self.message = message
-
-    def __str__(self):
-        return f'UnknownSymbolException: {self.message}'
+        return f'Invalid Syntax'
 
