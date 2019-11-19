@@ -32,12 +32,12 @@ class Roman():
             raise InvalidSyntaxException()
 
         for i in reversed(roman):
-            r = self._get_value_by_symbol(i)
-            if previous <= r:
-                total += r
-                previous = r
+            current = self._get_value_by_symbol(i)
+            if previous <= current:
+                total += current
+                previous = current
             else:
-                total -= r
+                total -= current
         return total
 
     def _validate_roman(self, roman):

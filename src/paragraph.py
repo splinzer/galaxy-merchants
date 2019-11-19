@@ -1,46 +1,50 @@
 #!/usr/bin/env python
 # pylint: disable=C0103
-from command import Command
-from question import Question
+import command
+import question
 
 
 class Paragraph():
+
+    QUESTION_MARK = '?'
+
     def __init__(self):
         self.__cache = {}
         self.__answer = []
-        self._cmd = Command()
-        self._question = Question()
+        self._cmd = command.Command()
+        self._question = question.Question()
 
     @property
     def cmd(self):
         return self._cmd
 
-    @cmd.setter
-    def cmd(self, cmd):
-        if not isinstance(cmd, object):
-            raise TypeError
-        self._cmd = cmd
-
     @property
     def question(self):
         return self._question
 
+    @cmd.setter
+    def cmd(self, cmd):
+        if not isinstance(cmd, command.Command.__bases__):
+            raise TypeError
+        self._cmd = cmd
+
     @question.setter
     def question(self, question):
-        if not isinstance(question, object):
+        if not isinstance(question, question.Question.__bases__):
             raise TypeError
         self._question = question
 
-    def read(self, intput_filename):
-        with open(intput_filename) as f:
+    def read(self, filename):
+        with open(filename) as f:
             for line in f:
-                if "?" in line:
-                    pass
+                if self.QUESTION_MARK in line:
+                    self.__answer.append(self.question.process_question())
                 else:
-                    symbol, value = self.cmd.process_command(line)
-                    self.__cache[symbol] = value
+                    symbol, decimal = self.cmd.process_command(line)
+                    self.__cache[symbol] = decimal
+
 
     def output(self):
-        with open('output_file.txt', "w") as f:
+        with open("output_file.txt", "w") as f:
             for i in self.__answer:
                 f.write(i + '\n')
