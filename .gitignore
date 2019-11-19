@@ -1,3 +1,5 @@
 # ignore the .vscode/settings.json
 .vscode/settings.json
 
+# ignore all pyc files
+*.pyc
