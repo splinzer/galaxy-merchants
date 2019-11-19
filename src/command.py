@@ -5,10 +5,11 @@ import roman
 
 class Command():
     def __init__(self):
+        self.__cmds = {}
         self._symbol = roman.Roman()
         self._command_types = MappingProxyType({
             "ASSIGMENT":
-            "^([A-Za-z]+) is ([I|V|X|L|C|D|M])$",
+            "^([A-Za-z]+) is ([A-Z])$",
             "CREDITS":
             "^([A-Za-z]+)([A-Za-z\\s]*) is ([0-9]+) ([c|C]redits)$",
             "HOW_MUCH":
@@ -30,10 +31,10 @@ class Command():
     def process_command(self, line):
 
         if re.match(self._command_types("ASSIGMENT"), line):
-            pass
+            self.__process_assignment(line)
 
         elif re.match(self._command_types("CREDITS"), line):
-            pass
+            self.__process_credits(line)
 
         elif re.match(self._command_types("HOW_MUCH"), line):
             pass
@@ -44,5 +45,17 @@ class Command():
         else:
             pass
 
-    def _process_assignment(self, line):
+    def __process_assignment(self, line):
+        pass
+
+    def __process_credits(self, line):
+        pass
+
+    def __process_how_much(self, line):
+        pass
+
+    def __process_how_many(self, line):
+        pass
+
+    def __process_no_idea(self, line):
         pass

@@ -28,11 +28,11 @@ class Roman():
     def roman_to_arabic(self, roman):
         total = 0
         previous = 0
-        if not self._validate_roman(roman):
+        if not self.__validate_roman(roman):
             raise InvalidSyntaxException()
 
         for i in reversed(roman):
-            current = self._get_value_by_symbol(i)
+            current = self.get_value_by_symbol(i)
             if previous <= current:
                 total += current
                 previous = current
@@ -40,12 +40,12 @@ class Roman():
                 total -= current
         return total
 
-    def _validate_roman(self, roman):
+    def __validate_roman(self, roman):
         if not re.match(self._validator, roman):
             return False
         return True
 
-    def _get_value_by_symbol(self, symbol):
+    def get_value_by_symbol(self, symbol):
         try:
             return self._valid_symbols[symbol]
         except:

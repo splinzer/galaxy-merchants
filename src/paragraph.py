@@ -37,12 +37,7 @@ class Paragraph():
     def read(self, filename):
         with open(filename) as f:
             for line in f:
-                if self.QUESTION_MARK in line:
-                    self.__answer.append(self.question.process_question())
-                else:
-                    symbol, decimal = self.cmd.process_command(line)
-                    self.__cache[symbol] = decimal
-
+                pass
 
     def output(self):
         with open("output_file.txt", "w") as f:
