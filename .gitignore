@@ -3,3 +3,6 @@
 
 # ignore all pyc files
 *.pyc
+
+# ignore the output file
+/output_file.txt
