@@ -1,10 +1,11 @@
 #!/usr/bin/env python
-from paragraph import Paragraph
+# pylint:disable=C0103
+import paragraph
 
 def main(filename):
-    paragraph = Paragraph()
-    paragraph.read(filename)
-    paragraph.output()
+    pgph = paragraph.Paragraph()
+    pgph.read(filename)
+    pgph.output()
 
 if __name__ == "__main__":
 

@@ -23,7 +23,12 @@ class Paragraph():
                 if self._cmd.process_command(line):
                     self.__answer.append(self._cmd.process_command(line))
 
+    # def output(self):
+    #     with open("../output_file.txt", "w") as f:
+    #         for i in self.__answer:
+    #             f.write(i + '\n')
+
     def output(self):
-        with open("../output_file.txt", "w") as f:
-            for i in self.__answer:
-                f.write(i + '\n')
+        print("Test Output:\n")
+        for i in self.__answer:
+            print(i)
