@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-# pylint: disable=R0903, C0103
 from paragraph import Paragraph
 
 def main(filename):

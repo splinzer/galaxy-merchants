@@ -1,10 +1,10 @@
+#!/usr/bin/env python
 import re
 from types import MappingProxyType
 from exception import InvalidSymbolException, InvalidSyntaxException
 
 
 class Roman():
-    
     def __init__(self):
         self._valid_symbols = MappingProxyType({
             'I': 1,
@@ -40,17 +40,13 @@ class Roman():
                 total -= current
         return total
 
-    def __validate_roman(self, roman):
-        if not re.match(self._validator, roman):
-            return False
-        return True
-
     def get_value_by_symbol(self, symbol):
         try:
             return self._valid_symbols[symbol]
         except:
             raise InvalidSymbolException(symbol)
 
-
-if __name__ == "__main__":
-    pass
+    def __validate_roman(self, roman):
+        if not re.match(self._validator, roman):
+            return False
+        return True
