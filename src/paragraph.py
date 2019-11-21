@@ -36,8 +36,10 @@ class Paragraph():
         """
         with open(filename) as f:
             for line in f:
-                if self._cmd.process_command(line):
-                    self.__answer.append(self._cmd.process_command(line))
+                # store the result in variable instead of three duplicated call
+                answer = self._cmd.process_command(line)
+                if answer:
+                    self.__answer.append(answer)
 
     def output(self) -> None:
         for i in self.__answer:
