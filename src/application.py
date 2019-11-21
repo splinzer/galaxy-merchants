@@ -21,6 +21,6 @@ class Application():
 
 
 if __name__ == "__main__":
-
+    # I think it's more interestring if player can get input from standard input and reponse answer interactively
     input_filename = '../input_file.txt'
     Application.main(input_filename)
