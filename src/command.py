@@ -99,6 +99,7 @@ class Command():
                 roman += self.__intergalactic[i]
             else:
                 metal = i
+        # variable metal might be referenced before assignment
         self.__metal[metal] = credit / self._symbol.roman_to_arabic(roman)
 
     def __process_how_many(self, line):
