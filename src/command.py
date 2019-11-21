@@ -24,6 +24,11 @@ class Command():
 
     @property
     def symbol(self):
+        """(obj): Setup the symbol, example: Roman
+
+            Raises:
+                TypeError
+        """
         return self._symbol
 
     @symbol.setter
@@ -32,8 +37,17 @@ class Command():
             raise TypeError
         self._symbol = symbol
 
-    def process_command(self, line):
+    def process_command(self, line: str):
+        """ Process each line and catagorize for further processing
 
+            Args:
+                line(str): each line of test input
+
+            Returns:
+                None: 
+                (str):
+             
+        """
         if re.match(self._command_types["ASSIGMENT"], line):
             return self.__process_assignment(line)
 
@@ -50,12 +64,30 @@ class Command():
             return self.__process_no_idea()
 
     def __process_assignment(self, line):
+        """ Process command line matches ASSIGNMENT regex
+
+            Args:
+                line(str): line of test input matches ASSIGNMENT regex
+
+            Returns:
+                None
+
+        """
         line = line.strip("\n").replace(" is ", "|").split("|")
         intergalactic, roman = line[0], line[-1]
 
         self.__intergalactic[intergalactic] = roman
 
     def __process_credits(self, line):
+        """ Process command line matches CREDITS regex
+
+            Args:
+                line(str): line of test input matches CREDITS regex
+
+            Returns:
+                None
+
+        """
         line = line.strip(" Credits\n").replace(" is ", "|").split("|")
         intergalactic_metal, credit = line[0], int(line[-1])
 
@@ -69,6 +101,15 @@ class Command():
         self.__metal[metal] = credit / self._symbol.roman_to_arabic(roman)
 
     def __process_how_many(self, line):
+        """ Process command line matches HOW_MANY regex
+
+            Args:
+                line(str): line of test input matches HOW_MANY regex
+
+            Returns:
+                (str): eg: glob glob Sliver is XXXX Credits
+
+        """
         line = line.replace("how many Credits is ", "").strip(" ?\n")
         intergalactic_metal = line
 
@@ -79,11 +120,21 @@ class Command():
             else:
                 metal = i
 
-        decimal = int(self._symbol.roman_to_arabic(roman) * self.__metal[metal])
+        decimal = int(
+            self._symbol.roman_to_arabic(roman) * self.__metal[metal])
 
         return f"{intergalactic_metal} is {decimal} Credits"
 
     def __process_how_much(self, line):
+        """ Process command line matches HOW_MUCH regex
+
+            Args:
+                line(str): line of test input matches HOW_MUCH regex
+
+            Returns:
+                (str): eg: glob glob is XXXX
+
+        """
         line = line.replace("how much is ", "").strip(" ?\n")
         intergalactic = line
 
