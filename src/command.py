@@ -92,12 +92,13 @@ class Command():
         intergalactic_metal, credit = line[0], int(line[-1])
 
         roman = ''
+        # avoid variable name like 'i' or 'j', use meaningful word like 'word'
+        # it will make you code more readable 
         for i in intergalactic_metal.split(" "):
             if i in self.__intergalactic.keys():
                 roman += self.__intergalactic[i]
             else:
                 metal = i
-
         self.__metal[metal] = credit / self._symbol.roman_to_arabic(roman)
 
     def __process_how_many(self, line):
