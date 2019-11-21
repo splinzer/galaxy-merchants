@@ -9,6 +9,11 @@ class Paragraph():
 
     @property
     def cmd(self):
+        """(obj): Setup the parsing command
+
+            Raises:
+                TypeError
+        """
         return self._cmd
 
     @cmd.setter
@@ -17,18 +22,23 @@ class Paragraph():
             raise TypeError
         self._cmd = cmd
 
-    def read(self, filename):
+    def read(self, filename: str) -> None:
+        """ Read the Test input file into self.__answer
+
+            Args:
+                filename(str): Test input file name
+
+            Returns:
+                None
+
+            Raise:
+                FileNotExistedError                
+        """
         with open(filename) as f:
             for line in f:
                 if self._cmd.process_command(line):
                     self.__answer.append(self._cmd.process_command(line))
 
-    # def output(self):
-    #     with open("../output_file.txt", "w") as f:
-    #         for i in self.__answer:
-    #             f.write(i + '\n')
-
-    def output(self):
-        print("Test Output:\n")
+    def output(self) -> None:
         for i in self.__answer:
             print(i)
